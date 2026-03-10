@@ -1,6 +1,7 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import { motion } from "framer-motion";
 import { Trash2 } from "lucide-react";
+import { cn } from "@/lib/utils";
 import type { Expense } from "@/data/mockExpenses";
 
 interface ExpenseItemProps {
@@ -25,7 +26,6 @@ const ExpenseItem: React.FC<ExpenseItemProps> = ({ expense, onDelete, index }) =
     <motion.tr
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
-      exit={{ opacity: 0, x: 20 }}
       transition={{ duration: 0.3, delay: index * 0.05 }}
       className="border-b border-border/30 group hover:bg-secondary/30 transition-colors"
     >
@@ -58,8 +58,5 @@ const ExpenseItem: React.FC<ExpenseItemProps> = ({ expense, onDelete, index }) =
     </motion.tr>
   );
 };
-
-// Need cn import
-import { cn } from "@/lib/utils";
 
 export default ExpenseItem;
